@@ -36,7 +36,7 @@ public class GameApp {
             over = ifEndANewRound();
         }
 
-        System.out.println("Good Bye");
+        System.out.println("Good Bye!");
 
     }
 
@@ -111,9 +111,9 @@ public class GameApp {
     public boolean ifEndANewRound() {
         String commend;
 
-        System.out.println("\tThe money you left: $" + player.getMoney());
-        System.out.println("r -> start a new round");
-        System.out.println("q -> quit the game");
+        System.out.println("\nThe money you left: $" + player.getMoney());
+        System.out.println("\tr -> start a new round");
+        System.out.println("\tq -> quit the game");
 
         commend = input.next();
         commend = commend.toLowerCase();

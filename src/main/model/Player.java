@@ -61,23 +61,23 @@ public class Player {
     //EFFECTS: get the card value
     public int cardSize(String card) {
         int value;
-        if (card == "A") {
+        if (card.equals("A")) {
             value = 1;
-        } else if (card == "2") {
+        } else if (card.equals("2")) {
             value = 2;
-        } else if (card == "3") {
+        } else if (card.equals("3")) {
             value = 3;
-        } else if (card == "4") {
+        } else if (card.equals("4")) {
             value = 4;
-        } else if (card == "5") {
+        } else if (card.equals("5")) {
             value = 5;
-        } else if (card == "6") {
+        } else if (card.equals("6")) {
             value = 6;
-        } else if (card == "7") {
+        } else if (card.equals("7")) {
             value = 7;
-        } else if (card == "8") {
+        } else if (card.equals("8")) {
             value = 8;
-        } else if (card == "9") {
+        } else if (card.equals("9")) {
             value = 9;
         } else {
             value = 10;
