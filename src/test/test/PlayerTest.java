@@ -52,6 +52,30 @@ class PlayerTest {
         i = player.cardSize("2");
         assertEquals(2, i);
 
+        i = player.cardSize("3");
+        assertEquals(3, i);
+
+        i = player.cardSize("4");
+        assertEquals(4, i);
+
+        i = player.cardSize("5");
+        assertEquals(5, i);
+
+        i = player.cardSize("6");
+        assertEquals(6, i);
+
+        i = player.cardSize("7");
+        assertEquals(7, i);
+
+        i = player.cardSize("8");
+        assertEquals(8, i);
+
+        i = player.cardSize("9");
+        assertEquals(9, i);
+
+        i = player.cardSize("10");
+        assertEquals(10, i);
+
         i = player.cardSize("J");
         assertEquals(10, i);
 
