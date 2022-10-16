@@ -64,7 +64,7 @@ public class GameApp {
     //EFFECTS: process user commend in a round
     public void processARound(String commend, int bid) {
 
-        if (player.getCardsSize() == 5) {
+        if (player.getCards().size() == 5) {
             System.out.println("The maximum card you can draw is 5. Choose the stand automatically.");
             getResult(bid);
         } else if (commend.equals("d")) {
@@ -119,8 +119,8 @@ public class GameApp {
         commend = commend.toLowerCase();
 
         if (commend.equals("r")) {
-            player.clearCards();
-            dealer.clearCards();
+            player.getCards().clear();
+            dealer.getCards().clear();
             return isGameOver();
         } else if (commend.equals("q")) {
             return true;
@@ -135,7 +135,7 @@ public class GameApp {
     public void start() {
         player.hitCard();
         player.hitCard();
-        System.out.println("The cards you have are " + player.getCard(0) + " and " + player.getCard(1));
+        System.out.println("The cards you have are " + player.getCards().get(0) + " and " + player.getCards().get(1));
     }
 
     //REQUIRES: 0 < bid <= player's money
@@ -147,15 +147,14 @@ public class GameApp {
         int bid;
         bid = input.nextInt();
 
-        if (bid < 0) {
+        if (bid <= 0) {
             System.out.println("The bid has to be positive");
-            placeBid();
+            bid = placeBid();
         } else if (bid > player.getMoney()) {
             System.out.println("The balance you have is $" + player.getMoney());
-            placeBid();
-        } else {
-            return bid;
+            bid = placeBid();
         }
+
         return bid;
     }
 
@@ -170,18 +169,17 @@ public class GameApp {
     //EFFECTS: draw a new card and display which card player draw
     public void doDraw() {
         player.hitCard();
-
         System.out.println("The cards you have are ");
 
-        for (int i = 0; i < player.getCardsSize(); i++) {
-            System.out.print(player.getCard(i) + " ");
+        for (int i = 0; i < player.getCards().size(); i++) {
+            System.out.print(player.getCards().get(i) + " ");
         }
 
     }
 
     //MODIFIES: this
     //EFFECTS: compare the card with dealer
-    //      -1: lose
+    //     -1: lose
     //      0: draw
     //      1: win
     //      2: win with black jack
@@ -205,7 +203,7 @@ public class GameApp {
     }
 
     //MODIFIES: this
-    //Effects: get the dealer's total point
+    //Effects: get the dealer's total point and return it
     public int dealerPoint() {
         dealer.hitCard();
         dealer.hitCard();
@@ -213,7 +211,7 @@ public class GameApp {
         while (dealer.getTotalPoint() < 17) {
             dealer.hitCard();
 
-            if (dealer.getCardsSize() >= 5) {
+            if (dealer.getCards().size() >= 5) {
                 return dealer.getTotalPoint();
             }
         }

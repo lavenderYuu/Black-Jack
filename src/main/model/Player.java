@@ -9,7 +9,7 @@ import java.util.Random;
 // Represents a player having cards, the total point of the cards, money (in dollars)
 public class Player {
 
-    static final int INITIAL_FUND = 100;
+    public static final int INITIAL_FUND = 1000;
     private List<String> cards;
     private int totalPoint;
     private int money;
@@ -36,17 +36,17 @@ public class Player {
     //Effects: calculate the total point of the cards we draw
     public int calculate(List<String> cards) {
         int point = 0;
-        boolean isA = false;
+        int numA = 0;
 
         for (String card: cards) {
             if (cardSize(card) == 1) {
-                isA = true;
+                numA++;
             } else {
                 point += cardSize(card);
             }
         }
 
-        if (isA) {
+        for (int i = 0; i < numA; i++) {
             if ((point + 11) <= 21) {
                 point += 11;
             } else {
@@ -54,11 +54,10 @@ public class Player {
             }
         }
 
-        totalPoint = point;
         return point;
     }
 
-    //EFFECTS: get the card value
+    //EFFECTS: get each card value
     public int cardSize(String card) {
         int value;
         if (card.equals("A")) {
@@ -86,29 +85,27 @@ public class Player {
         return value;
     }
 
+
+    //REQUIRES: times is an integer, money > bid > 0
+    //MODIFIES: this
+    //EFFECTS: get or lose the money according the result of the game
     public void moneyAddMins(int times, int bid) {
         money += times * bid;
     }
 
+    //EFFECTS: get the money player have
     public int getMoney() {
         return money;
     }
 
-    public void clearCards() {
-        cards.clear();
-    }
-
+    //EFFECTS: get the total point for the set of card player have now
     public int getTotalPoint() {
-        calculate(cards);
+        totalPoint = calculate(cards);
         return totalPoint;
     }
 
-    //REQUIRED: 0 <= index <= cards.size
-    public String getCard(int index) {
-        return cards.get(index);
-    }
-
-    public int getCardsSize() {
-        return cards.size();
+    //EFFECTS: get the card set player have now
+    public List<String> getCards() {
+        return cards;
     }
 }
