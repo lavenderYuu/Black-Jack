@@ -10,9 +10,13 @@ import java.util.Random;
 public class Player {
 
     private static final int INITIAL_FUND = 1000;
+    private static final List<String> givenList =
+            Arrays.asList("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
     private List<String> cards;
     private int totalPoint;
     private int money;
+
+
 
     //Effects: has initial fund and contains list of cards
     public Player() {
@@ -22,9 +26,8 @@ public class Player {
     }
 
     //Modifies: this
-    //Effects: draw a new card in the list
+    //Effects: draw a new card in the given list
     public void hitCard() {
-        List<String> givenList = Arrays.asList("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
         Random rand = new Random();
         int randIndex = rand.nextInt(givenList.size());
         String newCard = givenList.get(randIndex);
@@ -32,8 +35,8 @@ public class Player {
         cards.add(newCard);
     }
 
-    //Modifies: this
-    //Effects: calculate the total point of the cards we draw
+
+    //Effects: calculate the total point of the cards we given
     public int calculate(List<String> cards) {
         int point = 0;
         int numA = 0;
@@ -85,17 +88,11 @@ public class Player {
         return value;
     }
 
-
-    //REQUIRES: times is an integer, money > bid > 0
+    //REQUIRES: times is an integer, money >= bid > 0
     //MODIFIES: this
     //EFFECTS: get or lose the money according the result of the game
     public void moneyAddMins(int times, int bid) {
         money += times * bid;
-    }
-
-    //EFFECTS: get the money player have
-    public int getMoney() {
-        return money;
     }
 
     //MODIFIES: this
@@ -103,6 +100,11 @@ public class Player {
     public int getTotalPoint() {
         totalPoint = calculate(cards);
         return totalPoint;
+    }
+
+    //EFFECTS: get the money player have
+    public int getMoney() {
+        return money;
     }
 
     //EFFECTS: get the card set player have now

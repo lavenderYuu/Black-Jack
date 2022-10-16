@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Test for the player
 class PlayerTest {
     private Player player;
     private static final int INITIAL_FUND = 1000;

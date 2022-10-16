@@ -4,12 +4,13 @@ import model.Player;
 
 import java.util.Scanner;
 
+// Game application
 public class GameApp {
     private Player player;
     private Player dealer;
     private Scanner input;
 
-    //runs the game application
+    //EFFECTS: runs the game application
     public GameApp() {
         runGame();
     }
@@ -41,7 +42,7 @@ public class GameApp {
     }
 
     //MODIFIES: this
-    //Effects: initialize player and dealer
+    //EFFECTS: initialize player and dealer
     public void init() {
         player = new Player();
         dealer = new Player();
@@ -49,7 +50,7 @@ public class GameApp {
         input.useDelimiter("\n");
     }
 
-    //Effects: check if player still have money left
+    //EFFECTS: check if player still have money left
     public Boolean isGameOver() {
 
         if (player.getMoney() <= 0) {
@@ -60,6 +61,7 @@ public class GameApp {
         }
     }
 
+    //REQUIRES: 0 < bid <= player's money
     //MODIFIES: this
     //EFFECTS: process user commend in a round
     public void processARound(String commend, int bid) {
@@ -85,6 +87,7 @@ public class GameApp {
         }
     }
 
+    //REQUIRES: 0 < bid <= player's money
     //MODIFIES: this
     //EFFECTS: get result after the player choose stand
     public void getResult(int bid) {
@@ -138,9 +141,9 @@ public class GameApp {
         System.out.println("The cards you have are " + player.getCards().get(0) + " and " + player.getCards().get(1));
     }
 
-    //REQUIRES: 0 < bid <= player's money
+
     //MODIFIES: this
-    //EFFECTS: place the bid from your money
+    //EFFECTS: ask user to place the bid from your money
     public int placeBid() {
         int bid;
 
@@ -203,7 +206,8 @@ public class GameApp {
     }
 
     //MODIFIES: this
-    //Effects: get the dealer's total point and return it
+    //Effects: let dealer draw card with point greater or equal to 17.
+    //         Then get the dealer's total point and return it
     public int dealerPoint() {
         dealer.hitCard();
         dealer.hitCard();
