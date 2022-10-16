@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static model.Player.INITIAL_FUND;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PlayerTest {
     private Player player;
+    private static final int INITIAL_FUND = 1000;
 
     @BeforeEach
     public void setup() {
@@ -47,19 +47,19 @@ class PlayerTest {
     public void testCardSize() {
         int i;
         i = player.cardSize("A");
-        assertEquals(1,i);
+        assertEquals(1, i);
 
         i = player.cardSize("2");
-        assertEquals(2,i);
+        assertEquals(2, i);
 
         i = player.cardSize("J");
-        assertEquals(10,i);
+        assertEquals(10, i);
 
         i = player.cardSize("Q");
-        assertEquals(10,i);
+        assertEquals(10, i);
 
         i = player.cardSize("K");
-        assertEquals(10,i);
+        assertEquals(10, i);
     }
 
     @Test
@@ -94,11 +94,11 @@ class PlayerTest {
     }
 
     @Test
-    public void testMoneyAddMins(){
-        player.moneyAddMins(1,10);
-        assertEquals(INITIAL_FUND+10,player.getMoney());
+    public void testMoneyAddMins() {
+        player.moneyAddMins(1, 10);
+        assertEquals(INITIAL_FUND + 10, player.getMoney());
 
-        player.moneyAddMins(-1,100);
-        assertEquals(INITIAL_FUND-100,player.getMoney());
+        player.moneyAddMins(-1, 100);
+        assertEquals(INITIAL_FUND - 90, player.getMoney());
     }
 }

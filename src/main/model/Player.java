@@ -9,7 +9,7 @@ import java.util.Random;
 // Represents a player having cards, the total point of the cards, money (in dollars)
 public class Player {
 
-    public static final int INITIAL_FUND = 1000;
+    private static final int INITIAL_FUND = 1000;
     private List<String> cards;
     private int totalPoint;
     private int money;
@@ -98,6 +98,7 @@ public class Player {
         return money;
     }
 
+    //MODIFIES: this
     //EFFECTS: get the total point for the set of card player have now
     public int getTotalPoint() {
         totalPoint = calculate(cards);

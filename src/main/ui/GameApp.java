@@ -142,9 +142,9 @@ public class GameApp {
     //MODIFIES: this
     //EFFECTS: place the bid from your money
     public int placeBid() {
-        System.out.println("To start a new round please place the bid: ");
-
         int bid;
+
+        System.out.println("To start a new round please place the bid: ");
         bid = input.nextInt();
 
         if (bid <= 0) {
