@@ -110,7 +110,7 @@ public class GameApp {
     }
 
     //MODIFIES: this
-    //EFFECTS: process user commend to decide start a new round or End the game
+    //EFFECTS: process user commend to decide start a new round or end the game
     public boolean ifEndANewRound() {
         String commend;
 
@@ -143,7 +143,7 @@ public class GameApp {
 
 
     //MODIFIES: this
-    //EFFECTS: ask user to place the bid from your money
+    //EFFECTS: ask user to place the bid from the money they have
     public int placeBid() {
         int bid;
 
@@ -206,7 +206,7 @@ public class GameApp {
     }
 
     //MODIFIES: this
-    //Effects: let dealer draw card with point greater or equal to 17.
+    //EFFECTS: let dealer draw card with point greater or equal to 17.
     //         Then get the dealer's total point and return it
     public int dealerPoint() {
         dealer.hitCard();
