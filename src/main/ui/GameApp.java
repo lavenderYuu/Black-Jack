@@ -126,8 +126,9 @@ public class GameApp {
         String commend;
 
         System.out.println("\nThe money you left: $" + player.getMoney());
-        System.out.println("\tr -> start a new round\n" + "\tq -> quit the game");
-        System.out.println("\ts -> save your information and quit\n" + "\tl -> load your information");
+        System.out.println("\tr -> start a new round");
+        System.out.println("\tq -> save your information and quit");
+        System.out.println("\tl -> load your information");
 
         commend = input.next();
         commend = commend.toLowerCase();
@@ -137,8 +138,6 @@ public class GameApp {
             dealer.getCards().clear();
             return isGameOver();
         } else if (commend.equals("q")) {
-            return true;
-        } else if (commend.equals("s")) {
             savePlayer();
             return true;
         } else if (commend.equals("l")) {
