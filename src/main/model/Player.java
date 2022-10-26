@@ -1,6 +1,8 @@
 package model;
 
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -110,5 +112,12 @@ public class Player {
     //EFFECTS: get the card set player have now
     public List<String> getCards() {
         return cards;
+    }
+
+    // EFFECTS: return this as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("money", money);
+        return json;
     }
 }

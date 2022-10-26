@@ -1,14 +1,21 @@
 package ui;
 
 import model.Player;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // Game application
 public class GameApp {
+    private static final String STORAGE = "./data/player.json";
     private Player player;
     private Player dealer;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the game application
     public GameApp() {
@@ -20,10 +27,12 @@ public class GameApp {
     public void runGame() {
         String commend;
         int bid;
-        boolean over = false;
+        boolean over;
 
         System.out.println("Welcome to the Game: Black Jack");
         init();
+
+        over = ifEndANewRound();
 
         while (!over) {
             System.out.println("The money you have: $" + player.getMoney());
@@ -48,6 +57,8 @@ public class GameApp {
         dealer = new Player();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(STORAGE);
+        jsonReader = new JsonReader(STORAGE);
     }
 
     //EFFECTS: check if player still have money left
@@ -115,8 +126,8 @@ public class GameApp {
         String commend;
 
         System.out.println("\nThe money you left: $" + player.getMoney());
-        System.out.println("\tr -> start a new round");
-        System.out.println("\tq -> quit the game");
+        System.out.println("\tr -> start a new round\n" + "\tq -> quit the game");
+        System.out.println("\ts -> save your information and quit\n" + "\tl -> load your information");
 
         commend = input.next();
         commend = commend.toLowerCase();
@@ -127,6 +138,12 @@ public class GameApp {
             return isGameOver();
         } else if (commend.equals("q")) {
             return true;
+        } else if (commend.equals("s")) {
+            savePlayer();
+            return true;
+        } else if (commend.equals("l")) {
+            loadPlayer();
+            return isGameOver();
         } else {
             System.out.println("Selection invalid");
             return ifEndANewRound();
@@ -221,5 +238,29 @@ public class GameApp {
         }
         return dealer.getTotalPoint();
     }
+
+    // EFFECTS: saves the player to file
+    private void savePlayer() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(player);
+            jsonWriter.close();
+            System.out.println("Saved your money in " + STORAGE);
+            System.out.println("Looking forward to your next visit ('▽')");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to file " + STORAGE);
+        }
+    }
+
+    private void loadPlayer() {
+        try {
+            player = jsonReader.read();
+            System.out.println("Welcome back! ('▽')");
+        } catch (IOException e) {
+            System.out.println("Sorry, unable to find your information");
+        }
+
+    }
+
 
 }

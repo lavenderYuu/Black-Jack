@@ -51,3 +51,5 @@ with my friends when we get together
 - As a user, I want to be able to stand for compare.
 - As a user, I want to be able to start a new round.
 - As a user, I want to be able to view the fund I had.
+- As a user, I want to be able to save my fund.
+- As a user, I want to be able to be able to load my fund.
