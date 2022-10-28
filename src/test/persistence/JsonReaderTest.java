@@ -15,7 +15,7 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/nope");
         try {
             Player play = reader.read();
-            fail("IOExecption expected");
+            fail("IOException expected");
         } catch (IOException e) {
         }
     }

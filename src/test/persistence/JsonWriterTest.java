@@ -25,10 +25,10 @@ public class JsonWriterTest {
 
     @Test
     void testWriterGeneralPlayer() {
-        try  {
+        try {
             Player play = new Player();
             int m = play.getMoney();
-            play.moneyAddMins(2,m);
+            play.moneyAddMins(2, m);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralPlayer.json");
             writer.open();
             writer.write(play);
@@ -36,7 +36,7 @@ public class JsonWriterTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralPlayer.json");
             play = reader.read();
-            assertEquals(3*m, play.getMoney());
+            assertEquals(3 * m, play.getMoney());
 
         } catch (IOException e) {
             fail("Exception should not been thrown");

@@ -44,7 +44,7 @@ public class JsonReader {
         Player p = new Player();
 
         int inital = p.getMoney();
-        p.moneyAddMins(-1,inital);
+        p.moneyAddMins(-1, inital);
         p.moneyAddMins(1, money);
 
         return p;

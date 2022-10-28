@@ -225,8 +225,6 @@ public class GameApp {
     //EFFECTS: let dealer draw card with point greater or equal to 17.
     //         Then get the dealer's total point and return it
     public int dealerPoint() {
-        dealer.hitCard();
-        dealer.hitCard();
 
         while (dealer.getTotalPoint() < 17) {
             dealer.hitCard();
