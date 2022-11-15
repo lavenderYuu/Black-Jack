@@ -17,6 +17,7 @@ public class Player {
     private List<String> cards;
     private int totalPoint;
     private int money;
+    private int bet;
 
 
 
@@ -25,16 +26,18 @@ public class Player {
         money = INITIAL_FUND;
         cards = new ArrayList<>();
         totalPoint = 0;
+        bet = 0;
     }
 
     //Modifies: this
     //Effects: draw a new card in the given list
-    public void hitCard() {
+    public String hitCard() {
         Random rand = new Random();
         int randIndex = rand.nextInt(givenList.size());
         String newCard = givenList.get(randIndex);
 
         cards.add(newCard);
+        return newCard;
     }
 
 
@@ -93,8 +96,8 @@ public class Player {
     //REQUIRES: times is an integer, money >= bid > 0
     //MODIFIES: this
     //EFFECTS: get or lose the money according the result of the game
-    public void moneyAddMins(int times, int bid) {
-        money += times * bid;
+    public void moneyAddMins(int times, int bet) {
+        money += times * bet;
     }
 
     //MODIFIES: this
@@ -104,9 +107,18 @@ public class Player {
         return totalPoint;
     }
 
+    public void placeBet(int bet) {
+        this.bet = bet;
+    }
+
     //EFFECTS: get the money player have
     public int getMoney() {
         return money;
+    }
+
+    //EFFECTS: get the money player have
+    public int getBet() {
+        return bet;
     }
 
     //EFFECTS: get the card set player have now
@@ -114,7 +126,7 @@ public class Player {
         return cards;
     }
 
-    // EFFECTS: return this as JSON object
+//     EFFECTS: return this as JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("money", money);

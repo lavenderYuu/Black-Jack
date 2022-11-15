@@ -22,7 +22,11 @@ class PlayerTest {
     public void testConstructor() {
         assertEquals(INITIAL_FUND, player.getMoney());
         assertEquals(0, player.getTotalPoint());
+        assertEquals(0, player.getBet());
         assertEquals(0, player.getCards().size());
+
+        player.placeBet(100);
+        assertEquals(100, player.getBet());
     }
 
     @Test
