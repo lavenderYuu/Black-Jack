@@ -28,7 +28,8 @@ public class JsonWriterTest {
         try {
             Player play = new Player();
             int m = play.getMoney();
-            play.moneyAddMins(2, m);
+            play.placeBet(m);
+            play.moneyAddMins(2);
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralPlayer.json");
             writer.open();
             writer.write(play);

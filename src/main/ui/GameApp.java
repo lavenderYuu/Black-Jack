@@ -8,18 +8,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 // Game application
 public class GameApp {
     private static final String STORAGE = "./data/player.json";
     private Player player;
     private Player dealer;
-    private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    //EFFECTS: runs the game application
+    //EFFECTS: Initialize the game and start the graphic
     public GameApp() {
         init();
         new LoadWindow(this);
@@ -30,8 +28,6 @@ public class GameApp {
     public void init() {
         player = new Player();
         dealer = new Player();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
         jsonWriter = new JsonWriter(STORAGE);
         jsonReader = new JsonReader(STORAGE);
     }
@@ -87,6 +83,7 @@ public class GameApp {
         }
     }
 
+    //EFFECTS: load the player from file
     public void loadPlayer() {
         try {
             player = jsonReader.read();
@@ -104,13 +101,19 @@ public class GameApp {
         frame.setLocation((screen.width - frame.getWidth()) / 2, (screen.height - 100 - frame.getHeight()) / 2);
     }
 
+    //EFFECTS: getter for player
     public Player getPlayer() {
         return player;
     }
 
+    //EFFECTS: getter for dealer
     public Player getDealer() {
         return dealer;
     }
 
+    // Play the game
+    public static void main(String[] args) {
+        new GameApp();
+    }
 
 }

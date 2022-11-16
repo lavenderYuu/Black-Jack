@@ -124,10 +124,12 @@ class PlayerTest {
 
     @Test
     public void testMoneyAddMins() {
-        player.moneyAddMins(1, 10);
+        player.placeBet(10);
+        player.moneyAddMins(1);
         assertEquals(INITIAL_FUND + 10, player.getMoney());
 
-        player.moneyAddMins(-1, 100);
+        player.placeBet(100);
+        player.moneyAddMins(-1);
         assertEquals(INITIAL_FUND - 90, player.getMoney());
     }
 }

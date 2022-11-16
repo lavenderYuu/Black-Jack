@@ -20,7 +20,6 @@ public class Player {
     private int bet;
 
 
-
     //Effects: has initial fund and contains list of cards
     public Player() {
         money = INITIAL_FUND;
@@ -46,7 +45,7 @@ public class Player {
         int point = 0;
         int numA = 0;
 
-        for (String card: cards) {
+        for (String card : cards) {
             if (cardSize(card) == 1) {
                 numA++;
             } else {
@@ -61,7 +60,6 @@ public class Player {
                 point += 1;
             }
         }
-
         return point;
     }
 
@@ -89,15 +87,27 @@ public class Player {
         } else {
             value = 10;
         }
-
         return value;
     }
 
     //REQUIRES: times is an integer, money >= bid > 0
     //MODIFIES: this
     //EFFECTS: get or lose the money according the result of the game
-    public void moneyAddMins(int times, int bet) {
+    public void moneyAddMins(int times) {
         money += times * bet;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: change the bet for player
+    public void placeBet(int bet) {
+        this.bet = bet;
+    }
+
+    //EFFECTS: return this as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("money", money);
+        return json;
     }
 
     //MODIFIES: this
@@ -105,10 +115,6 @@ public class Player {
     public int getTotalPoint() {
         totalPoint = calculate(cards);
         return totalPoint;
-    }
-
-    public void placeBet(int bet) {
-        this.bet = bet;
     }
 
     //EFFECTS: get the money player have
@@ -124,12 +130,5 @@ public class Player {
     //EFFECTS: get the card set player have now
     public List<String> getCards() {
         return cards;
-    }
-
-//     EFFECTS: return this as JSON object
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("money", money);
-        return json;
     }
 }

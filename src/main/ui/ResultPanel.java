@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//represent the area to show the result
 public class ResultPanel extends JPanel {
     private JButton stand;
     private GameApp app;
@@ -15,6 +16,8 @@ public class ResultPanel extends JPanel {
     private GameFrame gameFrame;
     private JButton draw;
 
+    //Constructor
+    //EFFECTS: create the area to show the result
     public ResultPanel(GameApp app, GameFrame gameFrame, JButton draw) {
         this.app = app;
         player = app.getPlayer();
@@ -28,23 +31,26 @@ public class ResultPanel extends JPanel {
 
     }
 
+    //EFFECTS: create a stand button and return it
     public JButton standButton() {
         stand = new JButton("Stand");
         stand.setFocusable(false);
         stand.addActionListener(new ActionListener() {
             @Override
+            //MODIFIES: player
+            //EFFECTS: To show the result in the result area and make stand, draw button invisible
             public void actionPerformed(ActionEvent e) {
                 int result = app.isWinner();
 
                 if (result == -1) {
                     resultPanel("You lose :(");
-                    player.moneyAddMins(result, player.getBet());
+                    player.moneyAddMins(result);
                 } else if (result == 0) {
                     resultPanel("Tie :|      ");
-                    player.moneyAddMins(result, player.getBet());
+                    player.moneyAddMins(result);
                 } else {
                     resultPanel("You Win! :)");
-                    player.moneyAddMins(result, player.getBet());
+                    player.moneyAddMins(result);
                 }
 
                 stand.setVisible(false);
@@ -57,11 +63,13 @@ public class ResultPanel extends JPanel {
         return stand;
     }
 
+    //EFFECTS: create a save and quit button and return it
     public JButton saveAndQuitButton() {
         JButton save = new JButton("Save and quit");
         save.setFocusable(false);
         save.addActionListener(new ActionListener() {
             @Override
+            //EFFECTS: save the player information and quit the game
             public void actionPerformed(ActionEvent e) {
                 app.savePlayer();
                 System.exit(0);
@@ -70,6 +78,8 @@ public class ResultPanel extends JPanel {
         return save;
     }
 
+    //MODIFIES: this
+    //EFFECTS: create the result panel with given result
     public void resultPanel(String result) {
         JLabel lose = new JLabel();
         lose.setText(result + "    Dealer's point is " + dealer.getTotalPoint());
@@ -81,11 +91,16 @@ public class ResultPanel extends JPanel {
         add(lose);
     }
 
+    //MODIFIES: this
+    //EFFECTS: add restart button to restart a new round
     public void addRestartButton() {
-        JButton restart =  new JButton("start a new round");
+        JButton restart = new JButton("start a new round");
         restart.setFocusable(false);
         restart.addActionListener(new ActionListener() {
             @Override
+            //MODIFIES: player
+            //EFFECTS: initialize player and dealer's cards. If player has money start a new round
+            //      if not, jump to end the game window
             public void actionPerformed(ActionEvent e) {
                 player.getCards().clear();
                 dealer.getCards().clear();
@@ -98,7 +113,7 @@ public class ResultPanel extends JPanel {
                 }
             }
         });
-        restart.setBounds(700, 60,150, 40);
+        restart.setBounds(700, 60, 150, 40);
         add(restart);
     }
 

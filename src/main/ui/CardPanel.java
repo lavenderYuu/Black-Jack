@@ -7,9 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+//the area to place the card player draw. Image Designed by Macrovector / Freepik
 public class CardPanel extends JPanel {
-    private GameApp app;
     private ImageIcon imageK;
     private ImageIcon imageQ;
     private ImageIcon imageJ;
@@ -28,9 +27,9 @@ public class CardPanel extends JPanel {
     private Player player;
     private String card;
 
+    //EFFECTS: create the area to place the cards
     public CardPanel(GameApp gameApp) {
-        app = gameApp;
-        player = app.getPlayer();
+        player = gameApp.getPlayer();
         loadImages();
 
         setLayout(new FlowLayout());
@@ -40,11 +39,13 @@ public class CardPanel extends JPanel {
 
     }
 
+    //EFFECTS: create the button to draw card
     public JButton drawButton() {
         draw = new JButton("Draw");
         draw.setFocusable(false);
-        setVisible(true);
         draw.addActionListener(new ActionListener() {
+            //MODIFIES: this, Player
+            //EFFECTS: hit a card and display the card in the card area, if player have 5 cards, draw button disappear
             @Override
             public void actionPerformed(ActionEvent e) {
                 card = player.hitCard();
@@ -60,6 +61,7 @@ public class CardPanel extends JPanel {
         return draw;
     }
 
+    //EFFECTS: draw a card according to the new card you get
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void drawCard(String card) {
         if (card.equals("A")) {
@@ -91,73 +93,100 @@ public class CardPanel extends JPanel {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card A in the card area
     public void setA() {
         imageAsLabel = new JLabel(imageA);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 2 in the card area
     public void set2() {
         imageAsLabel = new JLabel(image2);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 3 in the card area
     public void set3() {
         imageAsLabel = new JLabel(image3);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 4 in the card area
     public void set4() {
         imageAsLabel = new JLabel(image4);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 5 in the card area
     public void set5() {
         imageAsLabel = new JLabel(image5);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 6 in the card area
     public void set6() {
         imageAsLabel = new JLabel(image6);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 7 in the card area
     public void set7() {
         imageAsLabel = new JLabel(image7);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 8 in the card area
     public void set8() {
         imageAsLabel = new JLabel(image8);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 9 in the card area
     public void set9() {
         imageAsLabel = new JLabel(image9);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card 10 in the card area
     public void set10() {
         imageAsLabel = new JLabel(image10);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card J in the card area
     public void setJ() {
         imageAsLabel = new JLabel(imageJ);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card Q in the card area
     public void setQ() {
         imageAsLabel = new JLabel(imageQ);
         add(imageAsLabel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: display card K in the card area
     public void setK() {
         imageAsLabel = new JLabel(imageK);
         add(imageAsLabel);
     }
 
 
-
+    //MODIFIES: this
+    //EFFECTS: load the image from images package
     private void loadImages() {
         imageK = resize(new ImageIcon("images/K.png"));
         imageQ = resize(new ImageIcon("images/Q.png"));
@@ -175,6 +204,8 @@ public class CardPanel extends JPanel {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: resize the image to 100, 138
     private ImageIcon resize(ImageIcon i) {
         Image image = i.getImage();
         return new ImageIcon(image.getScaledInstance(100, 138, Image.SCALE_SMOOTH));
