@@ -22,19 +22,24 @@ public class EndTheGame {
         frame.setSize(410, 300);
         app.centreOnScreen(frame);
         frame.setLayout(null);
-        quitButton();
-
-        JLabel question = new JLabel("You are broke. See you next time");
-        question.setBounds(40, 100, 400, 25);
-        question.setFont(new Font("Arial", Font.PLAIN, 18));
-        frame.add(question);
+        addQuitButton();
+        addNotice();
         frame.setVisible(true);
 
     }
 
     //MODIFIES: this
+    //EFFECTS: add a notification on the window
+    private void addNotice() {
+        JLabel question = new JLabel("You are broke. See you next time");
+        question.setBounds(40, 100, 400, 25);
+        question.setFont(new Font("Arial", Font.PLAIN, 18));
+        frame.add(question);
+    }
+
+    //MODIFIES: this
     //EFFECTS: add a quit Button on the window to quit the game
-    public void quitButton() {
+    public void addQuitButton() {
         quit = new JButton("quit");
         quit.setBounds(155, 200, 100, 40);
         quit.setFocusable(false);

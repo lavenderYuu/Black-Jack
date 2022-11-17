@@ -20,18 +20,22 @@ public class LoadWindow {
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(410, 300);
         frame.setLayout(null);
+        frame.setSize(410, 300);
+        app.centreOnScreen(frame);
 
         setYesButton();
         setNoButton();
-        app.centreOnScreen(frame);
+        addQuestion();
 
+        frame.setVisible(true);
+
+    }
+
+    private void addQuestion() {
         JLabel question = new JLabel("Do you want to load your information from last time?");
         question.setBounds(40, 100, 400, 25);
         frame.add(question);
-        frame.setVisible(true);
-
     }
 
     //MODIFIES: this

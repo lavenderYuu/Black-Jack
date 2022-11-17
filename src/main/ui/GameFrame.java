@@ -24,7 +24,6 @@ public class GameFrame extends JFrame {
         setTitle("Black Jack");
         app.centreOnScreen(this);
 
-        setVisible(true);
 
         InfoPanel info = new InfoPanel(player);
         CardPanel cardPanel = new CardPanel(app);
@@ -36,6 +35,7 @@ public class GameFrame extends JFrame {
         add(cardPanel, BorderLayout.EAST);
         add(resultPanel, BorderLayout.SOUTH);
 
+        setVisible(true);
         pack();
     }
 
