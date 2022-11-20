@@ -71,6 +71,10 @@ public class ResultPanel extends JPanel {
             @Override
             //EFFECTS: save the player information and quit the game
             public void actionPerformed(ActionEvent e) {
+                if (player.getMoney() == 0) {
+                    player.placeBet(1000);
+                    player.moneyAddMins(1);
+                }
                 app.savePlayer();
                 System.exit(0);
             }
