@@ -32,6 +32,8 @@ public class LoadWindow {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: add a label to the window
     private void addQuestion() {
         JLabel question = new JLabel("Do you want to load your information from last time?");
         question.setBounds(40, 100, 400, 25);

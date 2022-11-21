@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//the area to place the card player draw. Image Designed by Macrovector / Freepik
+//the area to place the card player draw. Image Designed by Macro vector / Free pik
 public class CardPanel extends JPanel {
     private ImageIcon imageK;
     private ImageIcon imageQ;
@@ -65,125 +65,40 @@ public class CardPanel extends JPanel {
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void drawCard(String card) {
         if (card.equals("A")) {
-            setA();
+            setCard(imageA);
         } else if (card.equals("2")) {
-            set2();
+            setCard(image2);
         } else if (card.equals("3")) {
-            set3();
+            setCard(image3);
         } else if (card.equals("4")) {
-            set4();
+            setCard(image4);
         } else if (card.equals("5")) {
-            set5();
+            setCard(image5);
         } else if (card.equals("6")) {
-            set6();
+            setCard(image6);
         } else if (card.equals("7")) {
-            set7();
+            setCard(image7);
         } else if (card.equals("8")) {
-            set8();
+            setCard(image8);
         } else if (card.equals("9")) {
-            set9();
+            setCard(image9);
         } else if (card.equals("10")) {
-            set10();
+            setCard(image10);
         } else if (card.equals("J")) {
-            setJ();
+            setCard(imageJ);
         } else if (card.equals("Q")) {
-            setQ();
+            setCard(imageQ);
         } else {
-            setK();
+            setCard(imageK);
         }
     }
 
     //MODIFIES: this
-    //EFFECTS: display card A in the card area
-    public void setA() {
-        imageAsLabel = new JLabel(imageA);
+    //EFFECTS: display Card in the card area
+    public void setCard(ImageIcon image) {
+        imageAsLabel = new JLabel(image);
         add(imageAsLabel);
     }
-
-    //MODIFIES: this
-    //EFFECTS: display card 2 in the card area
-    public void set2() {
-        imageAsLabel = new JLabel(image2);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 3 in the card area
-    public void set3() {
-        imageAsLabel = new JLabel(image3);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 4 in the card area
-    public void set4() {
-        imageAsLabel = new JLabel(image4);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 5 in the card area
-    public void set5() {
-        imageAsLabel = new JLabel(image5);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 6 in the card area
-    public void set6() {
-        imageAsLabel = new JLabel(image6);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 7 in the card area
-    public void set7() {
-        imageAsLabel = new JLabel(image7);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 8 in the card area
-    public void set8() {
-        imageAsLabel = new JLabel(image8);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 9 in the card area
-    public void set9() {
-        imageAsLabel = new JLabel(image9);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card 10 in the card area
-    public void set10() {
-        imageAsLabel = new JLabel(image10);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card J in the card area
-    public void setJ() {
-        imageAsLabel = new JLabel(imageJ);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card Q in the card area
-    public void setQ() {
-        imageAsLabel = new JLabel(imageQ);
-        add(imageAsLabel);
-    }
-
-    //MODIFIES: this
-    //EFFECTS: display card K in the card area
-    public void setK() {
-        imageAsLabel = new JLabel(imageK);
-        add(imageAsLabel);
-    }
-
 
     //MODIFIES: this
     //EFFECTS: load the image from images package

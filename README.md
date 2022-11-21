@@ -57,7 +57,9 @@ with my friends when we get together
 # Instructions for Grader
 
 - You can generate the first required event related to adding Xs to a Y by click the draw button
-- You can generate the second required event related to adding Xs to a Y by click the stand button
+- You can generate the second required event related to adding Xs to a Y by click 
+the stand button (modify new list for dealer with total point above 16, add all the element in the list) 
+and restart (clear all the elements in the list)
 - You can locate my visual component by see the card drew by player
 - You can save the state of my application by click the save and quit button
 - You can reload the state of my application by click the yes in the load window (first window)
