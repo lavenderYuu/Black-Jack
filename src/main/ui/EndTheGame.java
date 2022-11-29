@@ -51,6 +51,7 @@ public class EndTheGame {
                 brokenPlayer.placeBet(1000);
                 brokenPlayer.moneyAddMins(1);
                 app.savePlayer();
+                app.printLog();
                 System.exit(0);
             }
         });

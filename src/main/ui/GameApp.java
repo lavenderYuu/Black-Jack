@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Player;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -61,15 +63,17 @@ public class GameApp {
     //EFFECTS: let dealer draw card with point greater or equal to 17.
     //         Then get the dealer's total point and return it
     public int dealerPoint() {
+        int point = dealer.calculate(dealer.getCards());
 
-        while (dealer.getTotalPoint() < 17) {
+        while (point < 17) {
             dealer.hitCard();
+            point = dealer.calculate(dealer.getCards());
 
             if (dealer.getCards().size() >= 5) {
-                return dealer.getTotalPoint();
+                return point;
             }
         }
-        return dealer.getTotalPoint();
+        return point;
     }
 
     // EFFECTS: saves the player to file
@@ -111,9 +115,18 @@ public class GameApp {
         return dealer;
     }
 
+    //EFFECTS: print all the Events
+    public void printLog() {
+        EventLog el = EventLog.getInstance();
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n");
+        }
+    }
+
     // Play the game
     public static void main(String[] args) {
         new GameApp();
     }
+
 
 }

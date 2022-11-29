@@ -76,6 +76,7 @@ public class ResultPanel extends JPanel {
                     player.moneyAddMins(1);
                 }
                 app.savePlayer();
+                app.printLog();
                 System.exit(0);
             }
         });
@@ -106,8 +107,8 @@ public class ResultPanel extends JPanel {
             //EFFECTS: initialize player and dealer's cards. If player has money start a new round
             //      if not, jump to end the game window
             public void actionPerformed(ActionEvent e) {
-                player.getCards().clear();
-                dealer.getCards().clear();
+                player.clear();
+                dealer.clear();
                 if (player.getMoney() <= 0) {
                     new EndTheGame(app);
                     gameFrame.dispose();

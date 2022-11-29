@@ -1,6 +1,5 @@
 package model;
 
-
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -35,9 +34,11 @@ public class Player {
         int randIndex = rand.nextInt(givenList.size());
         String newCard = givenList.get(randIndex);
 
+        EventLog.getInstance().logEvent(new Event("Hit a new Card."));
         cards.add(newCard);
         return newCard;
     }
+
 
 
     //Effects: calculate the total point of the cards we given
@@ -95,6 +96,8 @@ public class Player {
     //EFFECTS: get or lose the money according the result of the game
     public void moneyAddMins(int times) {
         money += times * bet;
+        EventLog.getInstance().logEvent(
+                new Event("Fund is changed"));
     }
 
     //MODIFIES: this
@@ -114,6 +117,8 @@ public class Player {
     //EFFECTS: get the total point for the set of card player have now
     public int getTotalPoint() {
         totalPoint = calculate(cards);
+        EventLog.getInstance().logEvent(
+                new Event("Card total point is calculated successful."));
         return totalPoint;
     }
 
@@ -130,5 +135,12 @@ public class Player {
     //EFFECTS: get the card set player have now
     public List<String> getCards() {
         return cards;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: clear the Card set
+    public void clear() {
+        cards.clear();
+        EventLog.getInstance().logEvent(new Event("Card set is cleared."));
     }
 }

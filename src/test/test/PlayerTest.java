@@ -46,6 +46,8 @@ class PlayerTest {
         player.hitCard();
         assertEquals(5, player.getCards().size());
 
+        player.clear();
+        assertEquals(0, player.getCards().size());
     }
 
     @Test

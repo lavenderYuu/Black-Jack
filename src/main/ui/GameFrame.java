@@ -10,6 +10,8 @@ public class GameFrame extends JFrame {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 600;
     private ResultPanel resultPanel;
+    private InfoPanel info;
+    private CardPanel cardPanel;
     private JButton draw;
 
     //Constructor
@@ -25,11 +27,15 @@ public class GameFrame extends JFrame {
         app.centreOnScreen(this);
 
 
-        InfoPanel info = new InfoPanel(player);
-        CardPanel cardPanel = new CardPanel(app);
+        info = new InfoPanel(player);
+        cardPanel = new CardPanel(app);
         draw = cardPanel.drawButton();
         resultPanel = new ResultPanel(app, this, draw);
 
+        setPanel();
+    }
+
+    public void setPanel() {
         addButtonsPanel();
         add(info, BorderLayout.NORTH);
         add(cardPanel, BorderLayout.EAST);

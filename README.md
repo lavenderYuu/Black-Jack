@@ -11,7 +11,7 @@ Face cards are 10 and any other card is its value
 shown on the card.
 
 ### Rule
-Each player has **100** for the initial fund. In each round, before the deal begins, each player places a bet.
+Each player has **1000** for the initial fund. In each round, before the deal begins, each player places a bet.
 After the player has placed their bets, they will receive two cards. The player decides whether to "**stand**"
 (not ask for another card) or "**hit**" (ask for another card in an attempt to get closer to a count of 21, 
 or even hit 21 exactly). Thus, a player may stand on the two cards originally dealt to them, 
@@ -53,7 +53,7 @@ with my friends when we get together
 - As a user, I want to be able to view the fund I had.
 - As a user, I want to be able to save my fund.
 - As a user, I want to be able to be able to load my fund.
-- 
+
 # Instructions for Grader
 
 - You can generate the first required event related to adding Xs to a Y by click the draw button
@@ -63,3 +63,45 @@ and restart (clear all the elements in the list)
 - You can locate my visual component by see the card drew by player
 - You can save the state of my application by click the save and quit button
 - You can reload the state of my application by click the yes in the load window (first window)
+
+## Phase 4: Task 2
+Mon Nov 28 20:29:12 PST 2022
+Fund is changed
+
+Mon Nov 28 20:29:16 PST 2022
+Hit a new Card.
+
+Mon Nov 28 20:29:18 PST 2022
+Hit a new Card.
+
+Mon Nov 28 20:29:19 PST 2022
+Card total point is calculated successful.
+
+Mon Nov 28 20:29:19 PST 2022
+Hit a new Card.
+
+Mon Nov 28 20:29:19 PST 2022
+Hit a new Card.
+
+Mon Nov 28 20:29:19 PST 2022
+Hit a new Card.
+
+Mon Nov 28 20:29:19 PST 2022
+Card total point is calculated successful.
+
+Mon Nov 28 20:29:19 PST 2022
+Fund is changed
+
+Mon Nov 28 20:29:21 PST 2022
+Card set is cleared.
+
+Mon Nov 28 20:29:21 PST 2022
+Card set is cleared.
+
+
+## Phase 4: Task 3
+- PlaceBetWindow, EndTheGame and LoadWindow has similar performance, I can create an interface called Window make 
+those classes more organized.
+- Some code in the constructor I should write as the method in that class to make code more readable.
+- Player and Dealer has similar action but not exact same. Some code for dealer I wrote in the GameApp. 
+I can add an abstract class as Gamer, Player and Dealer can extend it.

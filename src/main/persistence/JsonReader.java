@@ -38,15 +38,12 @@ public class JsonReader {
     }
 
     // MODIFIES: this
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses player from JSON object and returns it
     private Player parsePlayer(JSONObject jsonObject) {
         int money = Integer.parseInt(String.valueOf(jsonObject.getInt("money")));
         Player p = new Player();
 
-        int inital = p.getMoney();
-        p.placeBet(inital);
-        p.moneyAddMins(-1);
-        p.placeBet(money);
+        p.placeBet(money - p.getMoney());
         p.moneyAddMins(1);
 
         return p;
