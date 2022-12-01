@@ -9,10 +9,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Unit tests for the Event class
- */
-//cite from the AlarmSystem
+//tests for the Event class cite from the AlarmSystem
 public class EventTest {
     private Event e;
     private Date d;
