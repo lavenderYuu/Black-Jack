@@ -24,6 +24,13 @@ public class EventTest {
     }
 
     @Test
+    public void testGetDate() {
+        e = new Event("date check");
+        d = Calendar.getInstance().getTime();
+        assertEquals(d, e.getDate());
+    }
+
+    @Test
     public void testEvent() {
         assertEquals("Card set is cleared.", e.getDescription());
     }
