@@ -116,7 +116,6 @@ public class CardPanel extends JPanel {
         image3 = resize(new ImageIcon("images/3.png"));
         image2 = resize(new ImageIcon("images/2.png"));
         imageA = resize(new ImageIcon("images/A.png"));
-
     }
 
     //MODIFIES: this
